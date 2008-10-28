@@ -2,3 +2,8 @@
 The User needs to convert a sequence from fasta to a tabular format.
 In the tabular format, every line has two columns, the id of the sequence and its sequence.
 This format is easier to use with grep. 
+
+2. Fasta file check
+The User needs to check whether a fasta file follows the right specification for fasta format.
+He wants to know whether all the sequences have a regular id, if there are blank lines, if all the lines are 80 characters width, and if they contains only character admitted by IUPAC for a certain alphabet.
+For example: unspecified nucleotide are described with N and not X, or something else.
