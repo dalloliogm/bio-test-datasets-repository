@@ -1,0 +1,4 @@
+1. Sequence convert
+The User needs to convert a sequence from fasta to a tabular format.
+In the tabular format, every line has two columns, the id of the sequence and its sequence.
+This format is easier to use with grep. 
