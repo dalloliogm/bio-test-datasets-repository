@@ -11,3 +11,13 @@
 3. Check whether a file contains repetitions of the same sequence
 	The User wants to know whether a sequence is replicated in the same file. E.g., a fasta file contains two times the sequence 'seq1.fasta'.
 	Parsers like SeqIO should return an error when parsing such files.
+
+4. Determine if a sequence is nucleotide or protein
+	The user needs to determine the most likely alphabet for a protein (dna, rna, protein, etc..)
+	Requests:
+	- http://lists.open-bio.org/pipermail/biopython/2009-January/004865.html
+
+5. parse quality files (.qual) from NBCItrace
+	quality files contains information about the quality of a sequence.
+	Requests:
+	- http://lists.open-bio.org/pipermail/biopython/2009-January/004862.html
