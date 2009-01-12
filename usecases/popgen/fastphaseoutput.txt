@@ -1,0 +1,27 @@
+What is the purpose of programs like fastPhase? 
+	FastPhase is a program to infer haplotypes from genotype data.
+	
+	Humans and most eukaryotes are diploid, so they have two copies of each chromosome.
+	Most of the techniques used to study the genotype of an individual, like microarrays, can only return information on the status of a marker in the subject, but can't differentiate between the two chromosomes.
+	For example, if you are studying a particular SNP, you will only know that the genotype of the individual is 'AG', but you won't know to which of the two copy of the chromosome the 'A' belongs, and where is it the 'G'.
+	Programs like fastPhase try to infer this information, when you have big collections of SNPs and possibly some information on their LD/know data, etc..
+	They can also try to infer the state of missing data, e.g. markers fro which you don't know the genotype. 
+	
+ 
+Typical fastPhase run
+	A typical fastPhase run can take up to days to complete, if the collection of SNPs to haplotype is big enought.
+	For this reason, we thought that users would prefer to use the full output format.
+	Also, fastPhase is thought to be run over diploid individuals only - no polyploids or Y/mt chromosomes.
+	
+fastPhase output
+	a fastPhase output contains information about the inferred haplotypes comprised in the tags 'BEGIN GENOTYPES' and
+	'END GENOTYPES'. 
+	For every individual, you will have two sequences, corresponding to the two different chromosomes.
+	Every sequence should have the same lenght as the others.
+
+Parsing a fastPhase output and converting it to a fasta file
+	Typically, the results of fastPhase are meant to be used for further analysis by other tools or scripts.
+	So, users have often the need to convert it to a format like fasta, or embl.
+	It would be also useful to be able to handle every sequence in the file separately.
+	  
+	

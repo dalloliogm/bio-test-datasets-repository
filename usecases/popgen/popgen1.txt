@@ -1,0 +1,6 @@
+Calculate Fst from a set of SNPs
+	User1 needs to calculate the Fst statistics for a collection of 100 SNPs genotyped in 500 individuals, in 20 populations.
+	  
+	  
+Parse the output of a Phase/FastPhase run
+	
