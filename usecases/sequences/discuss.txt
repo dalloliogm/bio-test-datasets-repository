@@ -1,0 +1,39 @@
+These cases comes from the discussion on http://lists.open-bio.org/pipermail/open-bio-l/2008-December/000505.html
+
+1.translate sequences using a codon table
+Take a provided set of CDS nucleotide sequences in FASTA format,
+translate them using NCBI codon table 11 (bacteria), and output the
+results as a FASTA file of protein sequences.
+
+2. Execute pairwise alignment using emboss-needle
+Take a provided set of protein sequences, and do pairwise
+alignments between them all using the EMBOSS tool needle.
+
+3. Create a cladogram from a set of protein sequences
+ Take a provided FASTA file of proteins, and run ClustalW on it
+using the default settings.  Take the multiple sequence alignment in
+ClustalW format, and covert it into Stockholm format.  Then build a
+neighbour joining tree using quick-tree program (which cannot read in
+ClustalW files directly).  Finally, load the tree file and produce a
+cladogram where the taxon/leaf XXX is highlighted in red.
+
+
+4. Querying pubmed for an author
+ Take a provided author name and keyword, and query the NCBI Entrez
+webinterface to get a list of matching papers.  Download these
+references (maybe as MedLine format, maybe as XML) and parse the
+result into a CSV file for input into your reference manager (e.g.
+EndNote - or generate a bibtex file for use with LaTeX).
+
+5. Download all ESTs sequenced for a specie
+ Taking a provided species name, and use NCBI Entrez to download
+all matching EST sequences to a FASTA format file.
+
+6. blast a protein sequence against a local database
+ Take a provided FASTA file of proteins and use standalone NCBI
+BLASTP to search them against the NR database using a expectation
+threshold of 10^-6 and at most ten alignments per query.  Parse the
+results, and generate a new FASTA file of the protein sequences where
+the description line includes the protein identifiers of closely
+related entries found with BLAST.  [A more sensible approach to
+automatic annotation would be nice, but more complicated]
