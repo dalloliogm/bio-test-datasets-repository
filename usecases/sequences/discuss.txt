@@ -9,7 +9,7 @@ results as a FASTA file of protein sequences.
 Take a provided set of protein sequences, and do pairwise
 alignments between them all using the EMBOSS tool needle.
 
-3. Create a cladogram from a set of protein sequences
+3. 
  Take a provided FASTA file of proteins, and run ClustalW on it
 using the default settings.  Take the multiple sequence alignment in
 ClustalW format, and covert it into Stockholm format.  Then build a
@@ -17,20 +17,16 @@ neighbour joining tree using quick-tree program (which cannot read in
 ClustalW files directly).  Finally, load the tree file and produce a
 cladogram where the taxon/leaf XXX is highlighted in red.
 
-
-4. Querying pubmed for an author
- Take a provided author name and keyword, and query the NCBI Entrez
+(4) Take a provided author name and keyword, and query the NCBI Entrez
 webinterface to get a list of matching papers.  Download these
 references (maybe as MedLine format, maybe as XML) and parse the
 result into a CSV file for input into your reference manager (e.g.
 EndNote - or generate a bibtex file for use with LaTeX).
 
-5. Download all ESTs sequenced for a specie
- Taking a provided species name, and use NCBI Entrez to download
+(5) Taking a provided species name, and use NCBI Entrez to download
 all matching EST sequences to a FASTA format file.
 
-6. blast a protein sequence against a local database
- Take a provided FASTA file of proteins and use standalone NCBI
+(6) Take a provided FASTA file of proteins and use standalone NCBI
 BLASTP to search them against the NR database using a expectation
 threshold of 10^-6 and at most ten alignments per query.  Parse the
 results, and generate a new FASTA file of the protein sequences where

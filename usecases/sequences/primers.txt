@@ -1,0 +1,2 @@
+1. calculate degenerate primers
+ http://lists.open-bio.org/pipermail/bioperl-l/2009-January/028908.html
