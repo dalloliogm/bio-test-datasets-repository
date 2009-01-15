@@ -14,10 +14,16 @@
 
 4. Determine if a sequence is nucleotide or protein
 	The user needs to determine the most likely alphabet for a protein (dna, rna, protein, etc..)
-	Requests:
+	Reference:
 	- http://lists.open-bio.org/pipermail/biopython/2009-January/004865.html
 
 5. parse quality files (.qual) from NBCItrace
 	quality files contains information about the quality of a sequence.
-	Requests:
+	Reference:
 	- http://lists.open-bio.org/pipermail/biopython/2009-January/004862.html
+
+6. codon usage analysis
+    take a cds sequence and count the codon usage for every aminoacid.
+    For example, for all the aminoacids that are coded by more than a codon, we want to know the percentage of every codon used in teh sequence.
+    References:
+    - http://lists.open-bio.org/pipermail/biopython/2009-January/004874.html
