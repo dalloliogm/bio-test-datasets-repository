@@ -1,0 +1,12 @@
+1. Install a new bio.* project
+    The installation of a bio.* project on a new machine should be done with the standard tools provided by the language it is written in, if possible.
+    For example, CPAN for bioperl, pypi for biopython, gems for ruby, etc..
+
+2. Update a bio.* project
+    When updating a bio.* installation, all the previous versions should be removed first.
+
+3. Having more than a version of the same bio.* on the same computer
+    
+
+4. Uninstall a bio.* project
+
