@@ -104,6 +104,7 @@ class BlankSeqCase(SimpleSeqCase):
 		pass
 
 
+# if you don't want to use nose, this is an hack to do it without having to change the current template
 if __name__ == '__main__':
     SimpleSeqCase.setUpClass()
     BlankSeqCase.setUpClass()
