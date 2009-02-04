@@ -18,9 +18,9 @@ import unittest
 # You can write a basic test case with all the test methods that you want to run on it, 
 # and then define the other test cases by subclassing it.
 
-# For example, in this file we are testing SeqIO's behaviour on two kind of fasta files: a
+# For example, in this file we are testing SeqIO's behaviour on two kinds of fasta files: a
 # simple sequence, and a blank sequence.
-# We have defined first the test case for the simple sequence, and then we have used inheritance
+# We have defined the test case for the simple sequence first, and then we have used inheritance
 # (note that the BlankSeqCase class, below, derives from SimpleSeqCase) to define the second.
 
 
@@ -62,6 +62,7 @@ class SimpleSeqCase(unittest.TestCase):
 	
 	def setUp(self):
 		# put here any instructions you want to be run before *every* test is executed.
+		#TODO: come with something to put here...
 		pass
 
 	def tearDown(self):
@@ -88,6 +89,7 @@ class SimpleSeqCase(unittest.TestCase):
 		self.assertRaises(StopIteration, self.sequences.next)
 
 
+# as we were saying before, BlankSeqCase derives from SimpleSeqCase so it inherits all its methods.
 class BlankSeqCase(SimpleSeqCase):
 	"""Test SeqIO's behaviour on a blank sequence"""
 	seqcontent = ">seq1\n\n"
