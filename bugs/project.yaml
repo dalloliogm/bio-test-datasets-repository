@@ -1,0 +1,14 @@
+--- !ditz.rubyforge.org,2008-03-06/project 
+name: bio-test-datasets-repository
+version: "0.5"
+components: 
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: bio-test-datasets-repository
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: public relations
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: use cases
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: templates for tests
+releases: []
+
