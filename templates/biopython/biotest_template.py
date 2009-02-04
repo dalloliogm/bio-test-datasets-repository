@@ -102,3 +102,10 @@ class BlankSeqCase(SimpleSeqCase):
 	# all the tests methods are also inherited, but maybe you want to define some more
 	def test_SomethingSpecialThatShouldHappenWithBlankSequences(self):
 		pass
+
+
+if __name__ == '__main__':
+    SimpleSeqCase.setUpClass()
+    BlankSeqCase.setUpClass()
+    from test import test_support
+    test_support.run_unittest(SimpleSeqCase, BlankSeqCase)
