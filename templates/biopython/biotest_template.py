@@ -30,7 +30,8 @@ class SimpleSeqCase(unittest.TestCase):
 
 	Long description of the test case (facultative).
 	"""
-	# put here any variable that you want to share within all the test 
+	# put here any variable that you want to share within all the tests, but changes between test cases
+	# For example, notice that we re-define these values in BlankSeqCase.
 	seqcontent = '>seq1\nactgactgacgtacgtaggtac\n'
 	known_values = {'id': 'seq1', 
 						'description': 'seq1',
