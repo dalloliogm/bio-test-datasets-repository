@@ -1,20 +1,34 @@
 #!/usr/bin/env python
-# python script by ...
-"""
-This is a template for (bio)python unittests.
-
-The simplest way to run these tests is by using nose ().
-"""
+# Copyright 2009 Giovanni Marco Dall'Olio - dalloliogm@gmail.com
+#
+# This is a template for (bio)python unittests.
+# 
+# There are many comments which explain how a basic unit test should be written, 
+# and how it works.
+# 
+#
+# Usage:
+#
+# You can run the tests in this file by executing it directly with the python interpreted:
+#
+# $: python biotest_template.py
+# ....
+#
+# However, it is recommended to use nose [1] to run it.
+# Download and install nose on your computer, and then run:
+# $: nosetests biotest_template.py
+# ...
+# to execute all the tests automatically.
+# It is recommended to read nose's documentation to understand everything about its' plugins 
+# and usage.
+# 
+# [1] http://code.google.com/p/python-nose/
+#
 
 """
 Short Description of the test package
 
 Long description of the test package (facultative)
-
-Example:
-SeqIO test cases
-
-This module contains many test cases to check SeqIO's behaviour.
 """
 import logging
 import unittest
@@ -28,9 +42,6 @@ import unittest
 # simple sequence, and a blank sequence.
 # We have defined the test case for the simple sequence first, and then we have used inheritance
 # (note that the BlankSeqCase class, below, derives from SimpleSeqCase) to define the second.
-
-
-
 class SimpleSeqCase(unittest.TestCase):
     """Short description of the test case (e.g. "Test SeqIO behaviour on a simple dna sequence")
 
