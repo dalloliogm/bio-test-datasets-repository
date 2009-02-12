@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # python script by ...
 """
+This is a template for (bio)python unittests.
+
+The simplest way to run these tests is by using nose ().
+"""
+
+"""
 Short Description of the test package
 
 Long description of the test package (facultative)
@@ -26,87 +32,90 @@ import unittest
 
 
 class SimpleSeqCase(unittest.TestCase):
-	"""Short description of the test case (e.g. "Test SeqIO behaviour on a simple dna sequence")
+    """Short description of the test case (e.g. "Test SeqIO behaviour on a simple dna sequence")
 
-	Long description of the test case (facultative).
-	"""
-	# put here any variable that you want to share within all the tests, but changes between test cases
-	# For example, notice that we re-define these values in BlankSeqCase.
-	seqcontent = '>seq1\nactgactgacgtacgtaggtac\n'
-	known_values = {'id': 'seq1', 
-						'description': 'seq1',
-						'sequence': 'actgactgacgtacgtaggtac'}
-	
-	@classmethod
-	def setUpClass(cls):
-		# put here any instructions you want to execute only *once* before executing *all* tests 
-		# described in this test case.
-		# Usually here people open input files, create databases, etc..
-		# note: this method will only work if you use nose (>0.10) to execute your tests. 
-		# Otherwise, you will have to do some tricks or move these instructions under the setUp
-		# function below.
-		# note2: don't be scared by the @classmethod thing. But notice that we are using 'class'
-		# instead of 'self'
+    Long description of the test case (facultative).
+    """
+    # put here any variable that you want to share within all the tests, but changes between test cases
+    # For example, notice that we re-define these values in BlankSeqCase.
+    seqcontent = '>seq1\nactgactgacgtacgtaggtac\n'
+    known_values = {'id': 'seq1', 
+                        'description': 'seq1',
+                        'sequence': 'actgactgacgtacgtaggtac'}
+    _test_is_set = False
 
-		from StringIO import StringIO
-		from Bio import SeqIO
+    @classmethod
+    def setUpClass(cls):
+        # put here any instructions you want to execute only *once* before executing *all* tests 
+        # Usually here people open input files, create databases, etc..
+        # note: this method will only work if you use nose (>0.10) to execute your tests. 
+        # note2: don't be scared by the @classmethod thing. But notice that we are using 'class'
+        # instead of 'self'
 
-		cls.seqfilehandler = StringIO(cls.seqcontent)
-		cls.sequences = SeqIO.parse(cls.seqfilehandler, 'fasta')
-		cls.seqrecord = cls.sequences.next()
+        from StringIO import StringIO
+        from Bio import SeqIO
 
-	@classmethod
-	def tearDownClass(cls):
-		# put here any method you want to execute only *once* after *all* tests are executed.
-		# if you don't need this method, you can remove it.
-		pass
-	
-	def setUp(self):
-		# put here any instructions you want to be run before *every* test is executed.
-		#TODO: come with something to put here...
-		pass
+        cls.seqfilehandler = StringIO(cls.seqcontent)
+        cls.sequences = SeqIO.parse(cls.seqfilehandler, 'fasta')
+        cls.seqrecord = cls.sequences.next()
 
-	def tearDown(self):
-		# put here any instructions you want to be run after *every* test is executed.
-		pass
+        cls._test_is_set = True
+
+    @classmethod
+    def tearDownClass(cls):
+        # put here any method you want to execute only *once* after *all* tests are executed.
+        # if you don't need this method, you can remove it.
+        pass
+    
+    def setUp(self):
+        # put here any instructions you want to be run before *every* test is executed.
+        #TODO: come with something to put here...
+
+        # the following is an hack in case you don't want to use nose:
+        if self._test_is_set is False:
+            self.setUpClass()
+
+    def tearDown(self):
+        # put here any instructions you want to be run after *every* test is executed.
+        pass
 
 
-	# Any method of this class with its name starting with 'test_' will be considered a test.
-	def test_knownValues(self):
-		"""
-		Compare the results from SeqIO.parse against some known values
-		"""
-		# all the outputs from print statements will be shown only if the test fails
-		print self.seqrecord
-		print self.seqrecord.seq.tostring(), self.known_values['sequence']
-		self.assertEqual(self.seqrecord.seq.tostring(), self.known_values['sequence'])
-		self.assertEqual(self.seqrecord.id, self.known_values['id'])
+    # Any method of this class with its name starting with 'test_' will be considered a test.
+    def test_knownValues(self):
+        """
+        Compare the results from SeqIO.parse against some known values
+        """
+        # all the outputs from print statements will be shown only if the test fails
+        print self.seqrecord
+        print self.seqrecord.seq.tostring(), self.known_values['sequence']
+        self.assertEqual(self.seqrecord.seq.tostring(), self.known_values['sequence'])
+        self.assertEqual(self.seqrecord.id, self.known_values['id'])
 
-	def test_stopIteration(self):
-		"""
-		Check that SeqIO returns an IterationError if there are no sequences left in the file.
-		"""
-		
-		self.assertRaises(StopIteration, self.sequences.next)
+    def test_stopIteration(self):
+        """
+        Check that SeqIO returns an IterationError if there are no sequences left in the file.
+        """
+        
+        self.assertRaises(StopIteration, self.sequences.next)
 
 
 # as we were saying before, BlankSeqCase derives from SimpleSeqCase so it inherits all its methods.
 class BlankSeqCase(SimpleSeqCase):
-	"""Test SeqIO's behaviour on a blank sequence"""
-	seqcontent = ">seq1\n\n"
-	known_values = {'id': 'seq1',
-						'description': 'seq1',
-						'sequence': ''}
+    """Test SeqIO's behaviour on a blank sequence"""
+    seqcontent = ">seq1\n\n"
+    known_values = {'id': 'seq1',
+                        'description': 'seq1',
+                        'sequence': ''}
 
-	# you don't need to re-define setUp and setUpClass methods here, because they are inherited from SimpleSeqCase
-	# all the tests methods are also inherited, but maybe you want to define some more
-	def test_SomethingSpecialThatShouldHappenWithBlankSequences(self):
-		pass
+    # you don't need to re-define setUp and setUpClass methods here, because they are inherited from SimpleSeqCase
+    # all the tests methods are also inherited, but maybe you want to define some more
+    def test_SomethingSpecialThatShouldHappenWithBlankSequences(self):
+        pass
 
 
 # if you don't want to use nose, this is an hack to do it without having to change the current template
 if __name__ == '__main__':
-    SimpleSeqCase.setUpClass()
-    BlankSeqCase.setUpClass()
+#    SimpleSeqCase.setUpClass()
+#    BlankSeqCase.setUpClass()
     from test import test_support
     test_support.run_unittest(SimpleSeqCase, BlankSeqCase)
