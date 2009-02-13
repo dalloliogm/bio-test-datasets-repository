@@ -1,23 +1,32 @@
 #!/usr/bin/env python
 # Copyright 2009 Giovanni Marco Dall'Olio - dalloliogm@gmail.com
 #
-# This is a template for (bio)python unittests.
+### This is a template for (bio)python unittests.
 # 
 # There are many comments which explain how a basic unit test should be written, 
 # and how it works.
 # 
 #
-# Usage:
+### Usage:
 #
-# You can run the tests in this file by executing it directly with the python interpreted:
+## You can run the tests in this file by executing it directly with the python interpreted:
 #
 # $: python biotest_template.py
-# ....
+# 
+# Compare the results from SeqIO.parse against some known values ... ok
+# Check that SeqIO returns an IterationError if there are no sequences left in the file. ... ok
+# test_SomethingSpecialThatShouldHappenWithBlankSequences (__main__.TabFormatSequence) ... ok
+# Compare the results from SeqIO.parse against some known values ... ok
+# Check that SeqIO returns an IterationError if there are no sequences left in the file. ... ok
 #
-# However, it is recommended to use nose [1] to run it.
+## However, it is recommended to use nose [1] to run it.
 # Download and install nose on your computer, and then run:
 # $: nosetests biotest_template.py
-# ...
+#
+# .....
+# ----------------------------------------------------------------------
+# Ran 5 tests in 0.195s
+#
 # to execute all the tests automatically.
 # It is recommended to read nose's documentation to understand everything about its' plugins 
 # and usage.
@@ -117,8 +126,8 @@ ctaggtctagggaggtcagcnntactatctttcacggctactatcgaggagaaactcgtaggagga
     def test_knownValues(self):
         """Compare the results from SeqIO.parse against some known values"""
         # all the outputs from print statements will be shown only if the test fails
-        print self.seqrecord
-        print self.seqrecord.seq.tostring(), self.known_values['sequence']
+        logging.debug(self.seqrecord)
+        logging.debug((self.seqrecord.seq.tostring(), self.known_values['sequence']))
         self.assertEqual(self.seqrecord.seq.tostring(), self.known_values['sequence'])
         self.assertEqual(self.seqrecord.id, self.known_values['id'])
 
