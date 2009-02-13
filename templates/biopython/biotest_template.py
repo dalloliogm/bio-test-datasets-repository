@@ -32,6 +32,7 @@ Long description of the test package (facultative)
 """
 import logging
 import unittest
+import pdb
 
 
 # In principle, every test case should be described by a different unittest.TestCase subclass.
@@ -62,7 +63,8 @@ class SimpleSeqCase(unittest.TestCase):
         # note: this method will only work if you use nose (>0.10) to execute your tests. 
         # note2: don't be scared by the @classmethod thing. But notice that we are using 'class'
         # instead of 'self'
-
+        
+        logging.basicConfig(level = logging.DEBUG)
         from StringIO import StringIO
         from Bio import SeqIO
 
@@ -82,14 +84,16 @@ class SimpleSeqCase(unittest.TestCase):
         # put here any instructions you want to be run before *every* test is executed.
         #TODO: come with something to put here...
 
-        # the following is an hack in case you don't want to use nose:
+        # the following is an hack to have global fixtures in case you don't want to use nose:
         if self._test_is_set is False:
             self.setUpClass()
 
     def tearDown(self):
         # put here any instructions you want to be run after *every* test is executed.
-        pass
 
+        # it can be useful to put a debugger break point here before the other instructions to tearDown.
+#        pdb.set_trace()
+        pass
 
     # Any method of this class with its name starting with 'test_' will be considered a test.
     def test_knownValues(self):
