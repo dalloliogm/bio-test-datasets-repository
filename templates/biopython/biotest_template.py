@@ -36,10 +36,9 @@ import pdb
     
 
 # basic tutorial
-# 
-# Every class represents a test case.
-# For example, let's say we want to prove that the function SeqIO can read correctly fasta and genbank files.
-# We will write at least two test case, each one testing a specific format example.
+#   Every class represents a test case.
+#   For example, let's say we want to prove that the function SeqIO can read correctly fasta and genbank files.
+#   We will write at least two test case, each one testing a specific format example.
 #
 # glossary:
 # - fixtures: instructions that are needed to prepare the environment where tests will be execute; for example, 
@@ -56,14 +55,16 @@ class SimpleFastaCase(unittest.TestCase):
     # For example, the sequences to test, the name of the files to open, etc..
 
     sequence = '''\
->simpleseq
+>simplefastaseq
 acgcgatgtttagctgactgagcggcgcccgtaagcannctacatctgactgacgtacgtaggtac
 ctaggtctagggaggtcagcnntactatctttcacggctactatcgaggagaaactcgtaggagga
 '''
+    format = 'fasta'
 
-    known_values = {'id': 'seq1', 
-                        'description': 'seq1',
-                        'sequence': 'actgactgacgtacgtaggtac'}
+    known_values = {'id': 'simplefastaseq', 
+                        'description': 'simplefastaseq',
+                        'sequence': 'acgcgatgtttagctgactgagcggcgcccgtaagcannctacatctgactgacgtacgtaggtacctaggtctagggaggtcagcnntactatctttcacggctactatcgaggagaaactcgtaggagga'}
+
     _test_is_set = False
 
     @classmethod
@@ -83,7 +84,7 @@ ctaggtctagggaggtcagcnntactatctttcacggctactatcgaggagaaactcgtaggagga
         from Bio import SeqIO
 
         cls.seqfilehandler = StringIO(cls.sequence)
-        cls.sequences = SeqIO.parse(cls.seqfilehandler, 'fasta')
+        cls.sequences = SeqIO.parse(cls.seqfilehandler, cls.format)
         cls.seqrecord = cls.sequences.next()
 
         cls._test_is_set = True
@@ -127,13 +128,17 @@ ctaggtctagggaggtcagcnntactatctttcacggctactatcgaggagaaactcgtaggagga
         self.assertRaises(StopIteration, self.sequences.next)
 
 
-# as we were saying before, BlankSeqCase derives from SimpleSeqCase so it inherits all its methods.
-class BlankSeqCase(SimpleSeqCase):
-    """Test SeqIO's behaviour on a blank sequence"""
-    sequence = ">seq1\n\n"
+# as we were saying TabFormatSequence derives from SimpleSeqCase so it inherits all its methods and tests.
+class TabFormatSequence(SimpleFastaCase):
+    """Test SeqIO's behaviour on a tab-format sequence"""
+    sequence = """
+seq1    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"""
+    format = 'tab'
     known_values = {'id': 'seq1',
                         'description': 'seq1',
-                        'sequence': ''}
+                        'sequence': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
+    _test_is_set = False
 
     # you don't need to re-define setUp and setUpClass methods here, because they are inherited from SimpleSeqCase
     # all the tests methods are also inherited, but maybe you want to define some more
@@ -143,7 +148,5 @@ class BlankSeqCase(SimpleSeqCase):
 
 # if you don't want to use nose, this is an hack to do it without having to change the current template
 if __name__ == '__main__':
-#    SimpleSeqCase.setUpClass()
-#    BlankSeqCase.setUpClass()
     from test import test_support
-    test_support.run_unittest(SimpleSeqCase, BlankSeqCase)
+    test_support.run_unittest(SimpleFastaCase, TabFormatSequence)
